@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset= utf-8">
+	<title>Главная страница</title>
+
+	<style>
+
+		* {
+			margin: 0;
+			padding: 0;
+
+		}
+		body {
+			background:#d9d8d8;
+		}
+		#wrapper{
+			width: 1415px;
+			margin:0px;
+			border: none;
+
+		}
+		#logo{
+			border: none;
+
+		}
+		div {
+			margin: 0px;
+		}
+
+		.img {
+			line-height: 1px; /* Межстрочное расстояние */
+		}
+
+		#okno {
+			width: 300px; /* Ширина */
+			height: 600px;
+			background: #d9d8d8; /* Цвет фона */
+			padding: 20px; /* Поля */
+			-moz-box-sizing: border-box; /* Для Firefox */
+			-webkit-box-sizing: border-box; /* Для Safari и Chrome */
+			box-sizing: border-box; /* Для IE и Opera */
+			border: 100px ;
+			float: left; /* Обтекание по правому краю */
+		}
+
+		#forma{
+
+			width: 300px; /* Ширина слоя */
+			margin: 0px; /* Значение отступов */
+			border: 0px;  /* Параметры границы */
+			padding: 0px;
+
+		}
+		select {
+			width: 250px; /* Ширина списка в пикселах */
+		}
+
+
+	</style>
+			<meta name="keywords" content="" />
+		<meta name="description" content="" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("#writer").click(function () {
+					var user=$("#user").val();
+					$.post("http://localhost:3000/writer",{user:user}, function(data){
+						if(data=="done"){console.log("Success!")}
+					})
+				})
+
+			});
+		</script>
+</head>
+
+<body>
+	<div id="wrapper">
+		<div id="header">
+
+			<div id="logo">
+				 <img src="img/logo1.png" alt="Логотип" width="1396" height="208" >
+				 <table border="2">
+				 <tr>
+				 <td>
+				 <div id="okno"><p>
+
+
+	<p><div id="forma" >
+	<h2>Ввод данных</h2>
+	<div class="box" >
+		<form action="/" enctype="multipart/form-data" method="post">
+			<input type="file" name="upload" multiple>
+			<input type="submit" value="Загрузить">
+		</form>
+
+	</div>
+	<h3>Вывод отчетов</h3>
+	<form action="/writer" enctype="multipart/form-data" method="post">
+		<div class="box">
+			<p id="tablica"><select size="3" name="report" >
+				<option disabled>Выберите отчет:</option>
+				<option value='lostIncome'>По выпадающим доходам</option>
+			</select></p>
+		</div>
+
+
+		<div class="box">
+			<p><select size="3" multiple name="controlCompany[]">
+				<option disabled>Выберите управляющую организацию:</option>
+				<option value='По всем организациям'>По всем организациям</option>
+				<option value='УК Городская'>УК Городская</option>
+				<option value='ООО "Управляющая компания "ГрадСервис"'>ООО "Управляющая компания "ГрадСервис"</option>
+			</select></p>
+		</div>
+
+		<div class="box">
+			<p><select size="3" multiple name="houseList[]">
+				<option disabled>Выберите адрес:</option>
+				<option value='По всем организациям'>По всем организациям</option>
+				<option value='Тимошенкова 34'>Тимошенкова 34</option>
+			</select></p>
+		</div>
+		<div class="box">
+			<p><select size="3" multiple name="years[]">
+				<option disabled>Выберите год:</option>
+				<option value='2016'>2016</option>
+				<option value='2015'>2015</option>
+			</select></p>
+		</div>
+
+		<div class="box">
+			<p><select size="3" multiple name="months[]">
+				<option disabled>Выберите месяц:</option>
+				<option value='1'>Январь</option>
+				<option value='2'>Февраль</option>
+				<option value='3'>Март</option>
+				<option value='4'>Апрель</option>
+				<option value='5'>Май</option>
+				<option value='6'>Июнь</option>
+				<option value='7'>Июль</option>
+				<option value='8'>Август</option>
+				<option value='9'>Сентябрь</option>
+				<option value='10'>Октябрь</option>
+				<option value='11'>Ноябрь</option>
+				<option value='12'>Декабрь</option>
+			</select></p>
+		</div>
+
+			<input type="button" id="writer" value="вывести отчет">
+	</form>
+	</td>
+	</tr>
+</table>
+
+	<br>
+
+	</div></div> 
+			</div></div>
+			<div id="menu">
+				
+			</div>
+		</div>
+		<div id="content">
+			
+		</div>
+		<div id="footer"></div>
+	</div>
+
+</body>
+</html>
